@@ -41,15 +41,15 @@ TEST_F(ParameterReaderTest, parameterPathResolution)
 {
     auto parameter_reader = std::make_shared<Aws::Client::Ros1NodeParameterReader>();
     auto param_path_flat = ParameterPath(
-        "test_configuration_provider/producers/" PARAM_READER_TEST__PARAM_PREFIX "/" PARAM_READER_TEST__PARAM_KEY
+        "test_parameter_reader/producers/" PARAM_READER_TEST__PARAM_PREFIX "/" PARAM_READER_TEST__PARAM_KEY
     );
     auto param_path_variadic = ParameterPath(
-        "test_configuration_provider", "producers", PARAM_READER_TEST__PARAM_PREFIX, PARAM_READER_TEST__PARAM_KEY
+        "test_parameter_reader", "producers", PARAM_READER_TEST__PARAM_PREFIX, PARAM_READER_TEST__PARAM_KEY
     );
     auto param_path_complex_no_node_ns = ParameterPath(std::vector<std::string>{},
             std::vector<std::string>{PARAM_READER_TEST__PARAM_PREFIX, PARAM_READER_TEST__PARAM_KEY});
     auto param_path_complex_with_node_ns = ParameterPath(
-            std::vector<std::string>{"test_configuration_provider", "producers"},
+            std::vector<std::string>{"test_parameter_reader", "producers"},
             std::vector<std::string>{PARAM_READER_TEST__PARAM_PREFIX, PARAM_READER_TEST__PARAM_KEY});
 
     ASSERT_EQ(param_path_flat.get_resolved_path('/', '/'), param_path_variadic.get_resolved_path('/', '/'));
@@ -77,6 +77,6 @@ TEST_F(ParameterReaderTest, parameterPathResolution)
 int main(int argc, char ** argv)
 {
     testing::InitGoogleTest(&argc, argv);
-    ros::init(argc, argv, "test_configuration_provider");
+    ros::init(argc, argv, "test_parameter_reader");
     return RUN_ALL_TESTS();
 }
