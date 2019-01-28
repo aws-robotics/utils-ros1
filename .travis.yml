@@ -25,5 +25,6 @@ matrix:
     - env: ROS_DISTRO="melodic" ROS_REPOSITORY_PATH=http://packages.ros.org/ros-shadow-fixed/ubuntu
 install:
   - git clone https://github.com/ros-industrial/industrial_ci.git .ros_ci
+  - git clone https://github.com/aws-robotics/utils-common.git aws-robotics/utils-common
 script:
   - .ros_ci/travis.sh
