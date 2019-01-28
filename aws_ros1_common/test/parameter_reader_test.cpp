@@ -77,11 +77,11 @@ TEST_F(ParameterReaderTest, parameterPathResolution)
 TEST(ParameterReader, failureTests)
 {
     auto parameter_reader = std::make_shared<Aws::Client::Ros1NodeParameterReader>();
-    auto inexistent_path = ParameterPath("I don't exist");
-    std::string inexistent_path_result = PARAM_READER_TEST__PARAM_VALUE;
+    auto nonexistent_path = ParameterPath("I don't exist");
+    std::string nonexistent_path_result = PARAM_READER_TEST__PARAM_VALUE;
     /* Querying for a nonexistent parameter should return NOT_FOUND and the out parameter remains unchanged. */
-    ASSERT_EQ(Aws::AwsError::AWS_ERR_NOT_FOUND, parameter_reader->ReadStdString(inexistent_path, inexistent_path_result));
-    ASSERT_EQ(inexistent_path_result, std::string(PARAM_READER_TEST__PARAM_VALUE));
+    ASSERT_EQ(Aws::AwsError::AWS_ERR_NOT_FOUND, parameter_reader->ReadStdString(nonexistent_path, nonexistent_path_result));
+    ASSERT_EQ(nonexistent_path_result, std::string(PARAM_READER_TEST__PARAM_VALUE));
 }
 
 int main(int argc, char ** argv)
