@@ -82,4 +82,13 @@ if(CATKIN_ENABLE_TESTING)
     ${PROJECT_NAME}
     ${catkin_LIBRARIES}
   )
+
+  add_rostest_gtest(test_parameter_reader
+          test/test_parameter_reader.test
+          test/parameter_reader_test.cpp)
+  target_link_libraries(test_parameter_reader
+    ${aws_common_LIBRARIES}
+    ${PROJECT_NAME}
+    ${catkin_LIBRARIES}
+  )
 endif()
