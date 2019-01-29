@@ -19,59 +19,55 @@
 namespace Aws {
 namespace Client {
 
-constexpr char kParameterNsSeparator = '/';
-constexpr char kNodeNsSeparator = '/';
-
 template <class T>
-static AwsError ReadParam(const ParameterPath & parameter_path, T & out)
+static AwsError ReadParam(const char * name, T & out)
 {
   std::string key;
-  std::string resolved_path = parameter_path.get_resolved_path(kNodeNsSeparator, kParameterNsSeparator);
-  if (ros::param::search(resolved_path, key) && ros::param::get(key, out)) {
+  if (ros::param::search(name, key) && ros::param::get(key, out)) {
     return AWS_ERR_OK;
   }
   return AWS_ERR_NOT_FOUND;
 }
 
-AwsError Ros1NodeParameterReader::ReadList(const ParameterPath & parameter_path, std::vector<std::string> & out) const
+AwsError Ros1NodeParameterReader::ReadList(const char * name, std::vector<std::string> & out) const
 {
-  return ReadParam(parameter_path, out);
+  return ReadParam(name, out);
 }
 
-AwsError Ros1NodeParameterReader::ReadDouble(const ParameterPath & parameter_path, double & out) const
+AwsError Ros1NodeParameterReader::ReadDouble(const char * name, double & out) const
 {
-  return ReadParam(parameter_path, out);
+  return ReadParam(name, out);
 }
 
-AwsError Ros1NodeParameterReader::ReadInt(const ParameterPath & parameter_path, int & out) const
+AwsError Ros1NodeParameterReader::ReadInt(const char * name, int & out) const
 {
-  return ReadParam(parameter_path, out);
+  return ReadParam(name, out);
 }
 
-AwsError Ros1NodeParameterReader::ReadBool(const ParameterPath & parameter_path, bool & out) const
+AwsError Ros1NodeParameterReader::ReadBool(const char * name, bool & out) const
 {
-  return ReadParam(parameter_path, out);
+  return ReadParam(name, out);
 }
 
-AwsError Ros1NodeParameterReader::ReadStdString(const ParameterPath & parameter_path, std::string & out) const
+AwsError Ros1NodeParameterReader::ReadStdString(const char * name, std::string & out) const
 {
-  return ReadParam(parameter_path, out);
+  return ReadParam(name, out);
 }
 
-AwsError Ros1NodeParameterReader::ReadString(const ParameterPath & parameter_path, Aws::String & out) const
+AwsError Ros1NodeParameterReader::ReadString(const char * name, Aws::String & out) const
 {
   std::string value;
-  AwsError result = ReadStdString(parameter_path, value);
+  AwsError result = ReadStdString(name, value);
   if (result == AWS_ERR_OK) {
     out = Aws::String(value.c_str());
   }
   return result;
 }
 
-AwsError Ros1NodeParameterReader::ReadMap(const ParameterPath & parameter_path,
+AwsError Ros1NodeParameterReader::ReadMap(const char * name,
                                           std::map<std::string, std::string> & out) const
 {
-  return ReadParam(parameter_path, out);
+  return ReadParam(name, out);
 }
 
 }  // namespace Client
