@@ -19,6 +19,10 @@
 namespace Aws {
 namespace Client {
 
+constexpr char kParameterNsSeparator = '/';
+constexpr char kNodeNsSeparator = '/';
+
+
 template <class T>
 static AwsError ReadParam(const char * name, T & out)
 {
@@ -70,5 +74,10 @@ AwsError Ros1NodeParameterReader::ReadMap(const char * name,
   return ReadParam(name, out);
 }
 
-}  // namespace Client
-}  // namespace Aws
+std::string Ros1NodeParameterReader::FormatParameterPath(const ParameterPath & param_path) const
+{
+  return param_path.get_resolved_path(kNodeNsSeparator, kParameterNsSeparator);
+}
+
+} // namespace Client
+} // namespace Aws

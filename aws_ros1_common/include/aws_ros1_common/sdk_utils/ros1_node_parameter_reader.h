@@ -25,6 +25,14 @@ namespace Client {
 class Ros1NodeParameterReader : public ParameterReaderInterface
 {
 public:
+  using ParameterReaderInterface::ReadList;
+  using ParameterReaderInterface::ReadDouble;
+  using ParameterReaderInterface::ReadInt;
+  using ParameterReaderInterface::ReadBool;
+  using ParameterReaderInterface::ReadStdString;
+  using ParameterReaderInterface::ReadString;
+  using ParameterReaderInterface::ReadMap;
+
   AwsError ReadList(const char * name, std::vector<std::string> & out) const override;
   AwsError ReadDouble(const char * name, double & out) const override;
   AwsError ReadInt(const char * name, int & out) const override;
@@ -32,6 +40,9 @@ public:
   AwsError ReadStdString(const char * name, std::string & out) const override;
   AwsError ReadString(const char * name, Aws::String & out) const override;
   AwsError ReadMap(const char * name, std::map<std::string, std::string> & out) const override;
+
+private:
+  std::string FormatParameterPath(const ParameterPath & param_path) const override;
 };
 
 }  // namespace Client
