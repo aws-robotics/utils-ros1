@@ -32,6 +32,28 @@ public:
   AwsError ReadParam(const ParameterPath & param_path, std::string & out) const override;
   AwsError ReadParam(const ParameterPath & param_path, Aws::String & out) const override;
   AwsError ReadParam(const ParameterPath & param_path, std::map<std::string, std::string> & out) const override;
+
+private:
+  template<class InvalidType>
+  AwsError ReadParam(InvalidType arg, std::vector<std::string> & out) const = delete;
+  
+  template<class InvalidType>
+  AwsError ReadParam(InvalidType arg, double & out) const = delete;
+  
+  template<class InvalidType>
+  AwsError ReadParam(InvalidType arg, int & out) const = delete;
+  
+  template<class InvalidType>
+  AwsError ReadParam(InvalidType arg, bool & out) const = delete;
+  
+  template<class InvalidType>
+  AwsError ReadParam(InvalidType arg, Aws::String & out) const = delete;
+  
+  template<class InvalidType>
+  AwsError ReadParam(InvalidType arg, std::string & out) const = delete;
+  
+  template<class InvalidType>
+  AwsError ReadParam(InvalidType arg, std::map<std::string, std::string> & out) const = delete;
 };
 
 }  // namespace Client
