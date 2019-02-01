@@ -56,13 +56,13 @@ TEST_F(ParameterReaderTest, parameterPathResolution)
     ASSERT_EQ(param_path_flat.get_resolved_path('/', '/'), param_path_complex_with_node_ns.get_resolved_path('/', '/'));
 
     std::string flat_result;
-    parameter_reader->ReadStdString(param_path_flat, flat_result);
+    parameter_reader->ReadParam(param_path_flat, flat_result);
     std::string variadic_result;
-    parameter_reader->ReadStdString(param_path_variadic, variadic_result);
+    parameter_reader->ReadParam(param_path_variadic, variadic_result);
     std::string complex_no_node_ns_result;
-    parameter_reader->ReadStdString(param_path_complex_no_node_ns, complex_no_node_ns_result);
+    parameter_reader->ReadParam(param_path_complex_no_node_ns, complex_no_node_ns_result);
     std::string complex_with_node_ns_result;
-    parameter_reader->ReadStdString(param_path_complex_with_node_ns, complex_with_node_ns_result);
+    parameter_reader->ReadParam(param_path_complex_with_node_ns, complex_with_node_ns_result);
 
     ASSERT_EQ(flat_result, variadic_result);
     ASSERT_EQ(variadic_result, complex_with_node_ns_result);
@@ -70,7 +70,7 @@ TEST_F(ParameterReaderTest, parameterPathResolution)
 
     ASSERT_EQ(std::string(), complex_no_node_ns_result);
     consumer.setParam(PARAM_READER_TEST__PARAM_PREFIX "/" PARAM_READER_TEST__PARAM_KEY, PARAM_READER_TEST__PARAM_VALUE);
-    parameter_reader->ReadStdString(param_path_complex_no_node_ns, complex_no_node_ns_result);
+    parameter_reader->ReadParam(param_path_complex_no_node_ns, complex_no_node_ns_result);
     ASSERT_EQ(complex_no_node_ns_result, complex_with_node_ns_result);
 }
 
@@ -80,7 +80,7 @@ TEST(ParameterReader, failureTests)
     auto nonexistent_path = ParameterPath("I don't exist");
     std::string nonexistent_path_result = PARAM_READER_TEST__PARAM_VALUE;
     /* Querying for a nonexistent parameter should return NOT_FOUND and the out parameter remains unchanged. */
-    ASSERT_EQ(Aws::AwsError::AWS_ERR_NOT_FOUND, parameter_reader->ReadStdString(nonexistent_path, nonexistent_path_result));
+    ASSERT_EQ(Aws::AwsError::AWS_ERR_NOT_FOUND, parameter_reader->ReadParam(nonexistent_path, nonexistent_path_result));
     ASSERT_EQ(nonexistent_path_result, std::string(PARAM_READER_TEST__PARAM_VALUE));
 }
 
