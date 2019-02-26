@@ -2,8 +2,8 @@
 Changelog for package aws_ros1_common
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.0.0 (2019-02-26)
+------------------
 * Remove legacy portions of the ParameterReader API (`#9 <https://github.com/aws-robotics/utils-ros1/issues/9>`_)
 * Update ParameterReader API to support ROS1/ROS2 (`#8 <https://github.com/aws-robotics/utils-ros1/issues/8>`_)
   * Revert "Revert ParameterReader change (`#5 <https://github.com/aws-robotics/utils-ros1/issues/5>`_)"
