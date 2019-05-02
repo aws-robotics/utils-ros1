@@ -14,5 +14,7 @@
   <depend>aws_common</depend>
   <depend>roscpp</depend>
 
+  <test_depend>gtest</test_depend>
+  <test_depend>google-mock</test_depend> 
   <test_depend>rostest</test_depend>
 </package>
