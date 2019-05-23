@@ -2,10 +2,9 @@ cmake_minimum_required(VERSION 2.8.3)
 project(aws_ros1_common)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-add_compile_options(-std=c++11)
+set(CMAKE_CXX_STANDARD 11)
 
 ## Find catkin macros and libraries
-find_package(aws_common REQUIRED)
 find_package(catkin REQUIRED COMPONENTS
   aws_common
   roscpp
@@ -67,28 +66,31 @@ if(CATKIN_ENABLE_TESTING)
 
   add_rostest_gtest(test_client_configuration_provider
     test/test_client_configuration_provider.test
-    test/client_configuration_provider_test.cpp)
+    test/client_configuration_provider_test.cpp
+  )
   target_link_libraries(test_client_configuration_provider
-    ${aws_common_LIBRARIES}
     ${PROJECT_NAME}
+    ${aws_common_LIBRARIES}
     ${catkin_LIBRARIES}
   )
 
   add_rostest_gtest(test_aws_ros_logger
     test/sdk_utils/logging/test_aws_ros_logger.test
-    test/sdk_utils/logging/aws_ros_logger_test.cpp)
+    test/sdk_utils/logging/aws_ros_logger_test.cpp
+  )
   target_link_libraries(test_aws_ros_logger
-    ${aws_common_LIBRARIES}
     ${PROJECT_NAME}
+    ${aws_common_LIBRARIES}
     ${catkin_LIBRARIES}
   )
 
   add_rostest_gtest(test_parameter_reader
-          test/test_parameter_reader.test
-          test/parameter_reader_test.cpp)
+    test/test_parameter_reader.test
+    test/parameter_reader_test.cpp
+  )
   target_link_libraries(test_parameter_reader
-    ${aws_common_LIBRARIES}
     ${PROJECT_NAME}
+    ${aws_common_LIBRARIES}
     ${catkin_LIBRARIES}
   )
 endif()
