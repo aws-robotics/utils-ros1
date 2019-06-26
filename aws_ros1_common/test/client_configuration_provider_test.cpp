@@ -20,6 +20,7 @@
 
 #define CLIENT_CONFIG_PREFIX "aws_client_configuration"
 #define USER_AGENT_SUFFIX "/user_agent"
+
 /**
  * Populates a ROS node and a client configuration with the same dummy values.
  * @param node
