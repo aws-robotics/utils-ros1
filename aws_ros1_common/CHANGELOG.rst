@@ -2,8 +2,8 @@
 Changelog for package aws_ros1_common
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.0.1 (2019-08-01)
+------------------
 * increment patch version (`#26 <https://github.com/aws-robotics/utils-ros1/issues/26>`_)
   Signed-off-by: Miaofei <miaofei@amazon.com>
 * Add gtest and gmock as test dependencies (`#17 <https://github.com/aws-robotics/utils-ros1/issues/17>`_)
