@@ -33,7 +33,9 @@ public:
    * (i.e. Trace), and control the log level via ROS.
    */
   explicit AWSROSLogger(Aws::Utils::Logging::LogLevel log_level = LogLevel::Trace);
-  virtual ~AWSROSLogger();
+  AWSROSLogger(AWSROSLogger const &) = delete;              // Do not allow copy constructor
+  AWSROSLogger & operator=(AWSROSLogger const &) = delete;  // Do not allow assignment operator
+  ~AWSROSLogger() override = default;
 
 protected:
   void LogTrace(const char * tag, const std::string & message) override;

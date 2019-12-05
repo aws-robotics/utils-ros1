@@ -64,7 +64,7 @@ AwsError Ros1NodeParameterReader::ReadParam(const ParameterPath & param_path, Aw
   std::string value;
   AwsError result = ReadParam(param_path, value);
   if (result == AWS_ERR_OK) {
-    out = Aws::String(value.c_str());
+    out = Aws::String(value.c_str()); // NOLINT(readability-redundant-string-cstr)
   }
   return result;
 }
