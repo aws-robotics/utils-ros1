@@ -16,11 +16,12 @@
 #include <aws_ros1_common/sdk_utils/logging/aws_ros_logger.h>
 #include <ros/ros.h>
 
-using namespace Aws::Utils::Logging;
+
+namespace Aws {
+namespace Utils {
+namespace Logging {
 
 AWSROSLogger::AWSROSLogger(Aws::Utils::Logging::LogLevel log_level) : AWSLogSystem(log_level) {}
-
-AWSROSLogger::~AWSROSLogger() {}
 
 void AWSROSLogger::LogTrace(const char * tag, const std::string & message)
 {
@@ -51,3 +52,7 @@ void AWSROSLogger::LogFatal(const char * tag, const std::string & message)
 {
   ROS_FATAL("[%s] %s", tag, message.c_str());
 }
+
+}  // namespace Logging
+}  // namespace Utils
+}  // namespace Aws
