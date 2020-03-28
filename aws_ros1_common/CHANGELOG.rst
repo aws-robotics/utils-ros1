@@ -2,8 +2,8 @@
 Changelog for package aws_ros1_common
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.0.2 (2020-03-28)
+------------------
 * Fix linting issues found by clang-tidy 6.0 (`#29 <https://github.com/aws-robotics/utils-ros1/issues/29>`_)
 * increment patch version (`#26 <https://github.com/aws-robotics/utils-ros1/issues/26>`_)
   Signed-off-by: Miaofei <miaofei@amazon.com>
