@@ -37,7 +37,7 @@ void InitializeNodeAndConfig(ros::NodeHandle & node, Aws::Client::ClientConfigur
   node.setParam(CLIENT_CONFIG_PREFIX "/verify_SSL", true);
   config.verifySSL = true;
   node.setParam(CLIENT_CONFIG_PREFIX "/follow_redirects", true);
-  config.followRedirects = true;
+  config.followRedirects = Aws::Client::FollowRedirectsPolicy::ALWAYS;
 }
 
 /**
@@ -56,10 +56,10 @@ TEST(DefaultClientConfigurationProvider, getClientConfiguration)
     generated_config
       .userAgent; /* Set the user agent to w/e was generated. Will be tested separately */
 
-  prepared_config.followRedirects = false;
+  prepared_config.followRedirects = Aws::Client::FollowRedirectsPolicy::NEVER;
   ASSERT_NE(prepared_config, generated_config);
 
-  prepared_config.followRedirects = true;
+  prepared_config.followRedirects = Aws::Client::FollowRedirectsPolicy::ALWAYS;
   ASSERT_EQ(prepared_config, generated_config);
 }
 

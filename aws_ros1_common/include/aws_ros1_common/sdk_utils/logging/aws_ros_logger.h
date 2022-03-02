@@ -36,6 +36,7 @@ public:
   AWSROSLogger(AWSROSLogger const &) = delete;              // Do not allow copy constructor
   AWSROSLogger & operator=(AWSROSLogger const &) = delete;  // Do not allow assignment operator
   ~AWSROSLogger() override = default;
+  virtual void Flush();
 
 protected:
   void LogTrace(const char * tag, const std::string & message) override;

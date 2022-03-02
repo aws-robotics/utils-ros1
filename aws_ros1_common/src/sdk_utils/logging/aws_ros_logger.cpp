@@ -23,6 +23,8 @@ namespace Logging {
 
 AWSROSLogger::AWSROSLogger(Aws::Utils::Logging::LogLevel log_level) : AWSLogSystem(log_level) {}
 
+void AWSROSLogger::Flush() {}
+
 void AWSROSLogger::LogTrace(const char * tag, const std::string & message)
 {
   ROS_DEBUG("[%s] %s", tag, message.c_str());
